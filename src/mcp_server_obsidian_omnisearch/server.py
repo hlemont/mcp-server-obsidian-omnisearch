@@ -13,7 +13,7 @@ def serve(host: str, port: str, base_path: str = None):
         The returned paths can be used with the read_note tool to view the note contents.
         """
         try:
-            search_url: str = "http://localhost:51361/search?q={query}"
+            search_url: str = f"http://{host}:{port}/search?q={query}"
             response = requests.get(search_url.format(query=quote(query)))
             response.raise_for_status()  # Raise an exception for bad status codes
             json_response = response.json()
