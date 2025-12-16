@@ -23,7 +23,7 @@ dependencies = [
 ]
 
 [project.scripts]
-mcp-server-obsidian-omnisearch = "mcp_server_obsidian_omnisearch:main"
+mcp-server-obsidian-omnisearch = "mcp_server_obsidian_omnisearch:__main__"
 
 [build-system]
 requires = ["hatchling"]
