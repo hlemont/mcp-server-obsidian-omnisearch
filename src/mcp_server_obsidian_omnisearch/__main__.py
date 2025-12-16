@@ -1,3 +1,4 @@
+import os
 from .server import serve
 
 
@@ -10,7 +11,12 @@ def main():
         sys.exit(1)
 
     obsidian_vault_path = sys.argv[1]
-    asyncio.run(serve(obsidian_vault_path))
+    host = os.environ.get("OBSIDIAN_HOST", "localhost")
+    port = os.environ.get("OBSIDIAN_PORT", "51361")
+
+    base_path = os.environ.get("BASE_PATH", None)
+    
+    asyncio.run(serve(host, port, base_path=base_path))
 
 
 if __name__ == "__main__":
