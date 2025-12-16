@@ -4,7 +4,7 @@ import requests
 import os
 
 
-def serve(obsidian_vault_path: str):
+def serve(host: str, port: str, base_path: str = None):
     mcp = FastMCP("obsidian-omnisearch", log_level="ERROR")
 
     @mcp.tool()
@@ -24,7 +24,7 @@ def serve(obsidian_vault_path: str):
                 f"<title>{item['basename']}</title>\n"
                 f"<excerpt>{item['excerpt']}</excerpt>\n"
                 f"<score>{item['score']}</score>\n"
-                f"<filepath>{os.path.join(obsidian_vault_path, item['path'].lstrip('/'))}</filepath>"
+                f"<filepath>{os.path.join(base_path or "/", item['path'].lstrip('/'))}</filepath>"
                 for item in sorted_results
             ]
 
